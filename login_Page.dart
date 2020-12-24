@@ -18,10 +18,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'dart:io';
 
 class LoginPage extends StatefulWidget {
-  final Function callback;
-
+ 
   LoginPage({this.callback, this.auth, this.onSignedIn});
-
+  final Function callback;
   final BaseAuth auth;
   final VoidCallback onSignedIn;
   @override
@@ -273,9 +272,7 @@ class _LoginPageState extends State<LoginPage>
     );
   }
 
-  /////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////
-
+ 
   Future<void> initPlatformState() async {
     Map<String, dynamic> deviceData;
 
@@ -371,15 +368,12 @@ class _LoginPageState extends State<LoginPage>
               _isButtonEnabled = false;
             });
 
-            //  widget.onSignedIn();
-
+ 
             mRequestVorbereitungController
                 .senkronizasyonRequestDataVorbereitung()
                 .then((requestdata) {
               mRequestController.getVersionundVertrag().whenComplete(() {
-                print("############# DATAVORBEREITUNG BITI ######## ");
-                //  requestdata.toString().split(' ').forEach((word) => print(word));
-                return mRequestController
+                  return mRequestController
                     .sessionDataVorbereitung(requestdata)
                     .then((requestdata) {
                   try {
@@ -430,8 +424,7 @@ class _LoginPageState extends State<LoginPage>
                         setState(() {
                           _isButtonEnabled = false;
                         });
-                        print(
-                            "############# LOGIN OLUYOR VE YONLENDIRIYOR##### ");
+                        
                       } else {
                         controller.reverse();
                         setState(() {
