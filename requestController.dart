@@ -30,8 +30,6 @@ class RequestController {
     mDbHelper.initializeDb();
 
     Database db = await mDbHelper.db;
-    print(
-        "######################## Senkronizasyon REquest icin DATA Toplaniyor ####################");
     List tableList = List();
 
     List<dynamic> tableModel;
@@ -200,12 +198,10 @@ class RequestController {
         requestString += '"$tableName" :' + jsonEncode(tableModel) + ",";
       }
     }
-    // SEnkron Prokotoll senden
+    // Senkron Prokotoll senden
     dbResult = await db.rawQuery(
         "SELECT * FROM sync_protokoll WHERE sync_table !='image_container'");
     requestString += '"sync_protokoll" :' + jsonEncode(dbResult);
-    print(
-        "######################## Senkronizasyon REquest icin DATA TOPLAMA BITTIIIIII ####################");
     return requestString;
   }
 
